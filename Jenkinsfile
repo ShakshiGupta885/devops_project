@@ -5,9 +5,12 @@ pipeline {
 
         stage('Debug Docker') {
             steps {
-                bat 'where docker'
-                bat 'docker --version'
-                bat 'docker info'
+                bat '''
+                    set "PATH=C:\\Users\\SHAKSHI\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin;%PATH%"
+                    where docker
+                    docker --version
+                    docker info
+                '''
             }
         }
 

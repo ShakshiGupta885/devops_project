@@ -20,6 +20,13 @@ pipeline {
             }
         }
 
+        stage('Cleanup Old Containers') {
+            steps {
+                echo 'Removing any old containers...'
+                bat 'docker-compose down || exit 0'
+            }
+        }
+
         stage('Docker Run') {
             steps {
                 echo 'Starting Docker containers...'

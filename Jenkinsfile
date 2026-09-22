@@ -1,18 +1,11 @@
 pipeline {
     agent any
 
-    stages {
+    environment {
+        PATH = "C:\\Users\\SHAKSHI\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin;${env.PATH}"
+    }
 
-        stage('Debug Docker') {
-            steps {
-                bat '''
-                    set "PATH=C:\\Users\\SHAKSHI\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin;%PATH%"
-                    where docker
-                    docker --version
-                    docker info
-                '''
-            }
-        }
+    stages {
 
         stage('Checkout') {
             steps {
@@ -46,7 +39,6 @@ pipeline {
         success {
             echo 'BUILD SUCCESSFUL - Docker containers are running!'
         }
-
         failure {
             echo 'BUILD FAILED - Check the console output.'
         }

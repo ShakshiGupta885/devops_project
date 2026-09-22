@@ -16,21 +16,21 @@ pipeline {
         stage('Docker Build') {
             steps {
                 echo 'Building Docker images...'
-                bat 'docker compose build'
+                bat 'docker-compose build'
             }
         }
 
         stage('Docker Run') {
             steps {
                 echo 'Starting Docker containers...'
-                bat 'docker compose up -d'
+                bat 'docker-compose up -d'
             }
         }
 
         stage('Check Containers') {
             steps {
                 echo 'Checking containers...'
-                bat 'docker compose ps'
+                bat 'docker-compose ps'
             }
         }
     }

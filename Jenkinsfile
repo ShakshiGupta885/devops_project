@@ -3,6 +3,14 @@ pipeline {
 
     stages {
 
+        stage('Debug Docker') {
+            steps {
+                bat 'where docker'
+                bat 'docker --version'
+                bat 'docker info'
+            }
+        }
+
         stage('Checkout') {
             steps {
                 echo 'Checking out GitHub repository...'
